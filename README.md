@@ -17,7 +17,7 @@ FaRSA is an optimized library for solving l1-regularized convex optimization pro
 
 - Clone it from our github repository:
 	
-		git clone https://github.com/motian12ps/FaRSA
+		git clone https://github.com/tianyic/FaRSA
 		
 - For Unix users, you can also get our source files via: 
 
@@ -39,7 +39,7 @@ If compiling failed due to permission issue, please compile by
 
 To test whether installation is successful, run the below command:
 
-	farsa -t
+	farsa -t test
 
 #### 3. Build on Ubuntu or other Unix Machines
 
@@ -58,7 +58,7 @@ If compiling failed due to permission issue, please compile by
 
 To test whether installation is successful, run the below command:
 
-	farsa -t
+	farsa -t test
 	
 ---
 
@@ -268,6 +268,16 @@ To fill in the above template, three global variables maybe useful and can be di
 © Contributors, 2016.
 
 FaRSA is free to academic use. 
+
+Contributors:
+
+- Tianyi Chen, PhD Candidate, Department of Applied Mathematics and Statistic, Johns Hopkins University. Email: <tchen59@jhu.edu>
+
+- Daniel P. Robinson, Assistant Professor, Department of Applied Mathematics and Statistic, Johns Hopkins University. Email: <daniel.p.robinson@gmail.com>
+
+- Frank E. Curtis, Associate Professor, Department of Industrial and Systems Engineering, Lehigh University. Email: <frank.e.curtis@gmail.com>
+
+
  
  
  
