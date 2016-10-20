@@ -48,7 +48,7 @@ Make sure gcc complier has been installed on your machine, if not, please run th
 	sudo apt-get update
 	sudo apt-get install build-essential
 
-FaRSA directory, run the below command in terminal to compile:
+In FaRSA directory, run the below command in terminal to compile:
 
 	make
 
