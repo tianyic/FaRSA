@@ -260,6 +260,69 @@ To fill in the above template, three global variables maybe useful and can be di
 
 - **nS**: A integer save the number of free vairables in **S**.
 
+#### 4.4 Set Input_FaRSA Structure
+
+After implement the above three functions, initialize Input_FaRSA Structure, asign these three functions to corresponding attributes of Input_RSA structure and set the rest one **n** as the dimension of vairable **x** in the **main** function of **client.c**. For example,
+
+```
+int main( int argc, char **argv ){
+
+	struct Input_FaRSA input_farsa;
+	
+	input_farsa.n = 10;
+	input_farsa.func = &personalized_func;
+	input_farsa.grad_f = &personalized_grad_f;
+	input_farsa.hessVec = &personalized_hessVec;
+	
+	...
+
+}	
+```
+
+
+### 5 Run FaRSA
+
+After building profile and modifying client.c if necessary, we need to compile FaRSA one more time by
+
+	make
+
+If compiling failed due to permission issue, please compile by 
+
+	sudo make
+
+To test whether compile is successful, run the below command:
+
+	farsa -t test
+
+
+**Note:** If there is **NO change** in **client.c**, then there is **no** need to complie FaRSA one more time if you have complied before.
+
+Now, we are ready to run FaRSA to solve our aimed problems. Run the below command:
+
+	farsa -t path_to_profile
+
+**Note:** path_to_profile is 
+
+- The absolute path accesses to profile location or 
+
+- The relative path to FaRSA source directory accesses to profile location.
+
+Output will be displayed in terminal, like
+
+```
+$ farsa -p FaRSA1.profile
+Dataset Description:
+Number of samples : 19996
+Number of features: 1355191
+Logistic loss plus l1 regularizer...
+Initial objective function value: 0.693147
+Optimal solution has been found.
+Objective function value: 0.323483
+Iteration: 18
+Error: 0.000001
+Target tolerance: 0.000001
+runtime: 3.333872s
+```
 
  --- 
  
