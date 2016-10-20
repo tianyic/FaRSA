@@ -66,15 +66,14 @@ To test whether installation is successful, run the below command:
 
 ### 1. Quick Start 
 
-In general, FaRSA contains special optimized routine and a generic rountine. Then 
-special optimized routine provides highly efficient solutions for solving the below popular optimization problem:
+In general, FaRSA contains a special optimized routine and a generic rountine. The special optimized routine provides highly optimized solutions for solving the below popular optimization problem:
 
 - logistic loss 
 
 - ...
 
 
-Generic routine can also support solving personalized loss functions by a generic routine.
+Generic routine can support solving personalized objective functions.
 
 In order to successfully call FaRSA to solve aimed problem, users are expected to finish the below steps:
 
@@ -82,7 +81,7 @@ In order to successfully call FaRSA to solve aimed problem, users are expected t
 
 - Prepare readable dataset if necessary
 
-- If aim problems do not belong to FaRSA's existed problem solutions, for C users, modifying **client.c** based on aimed problem.
+- If aim problems do not belong to FaRSA's existed problem solutions, for C users, modify **client.c** based on aimed problem.
 
 Once the above steps are complete, run the below command in terminal to call FaRSA for solving aimed problem:
 
@@ -160,7 +159,7 @@ positive float set. Default: 0.1
 
 ### 3 Data Set Prepration
 
-Users are expected to offer data file in specific data format if called FaRSA routine needs. Data set format that current FaRSA supports is libsvm format, which is suitable for sparse data set.  
+Data set format that current FaRSA supports is libsvm format, which is suitable for sparse data set.  
 
 **libsvm format** let each row represent each sample. The first entry of each row is the label of corresponding sample. Features with value as zero are ignored. Features with nonzero values are aligned as feature index, colon delimiter, feature value, as below:
 
@@ -262,7 +261,7 @@ To fill in the above template, three global variables maybe useful and can be di
 
 #### 4.4 Set Input_FaRSA Structure
 
-After implement the above three functions, initialize Input_FaRSA Structure, asign these three functions to corresponding attributes of Input_RSA structure and set the rest one **n** as the dimension of vairable **x** in the **main** function of **client.c**. For example,
+After implementing the above three functions, the next is to initialize Input_FaRSA Structure, asign these three functions to corresponding attributes of Input_RSA structure and set the rest  attribute **n** as the dimension of vairable **x** in the **main** function of **client.c**. For example,
 
 ```
 int main( int argc, char **argv ){
