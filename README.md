@@ -189,23 +189,85 @@ In general, there are three functions to be implemented:
 
 - A function to calculate objective function value given current x
 
-- A function to calculate gradient of objecitve function given current x.
+- A function to calculate gradient of f that is objecitve function without l1-regularized term given current x.
 
 - A function to calculate reduced hessian vector product given a vector. 
 
 
 
+
 #### 4.1 Function To Caculate Objecitve Function Value Given Current x
 
+The template of this function is the following:
+
+```
+double personalized_func( double *x ){
+
+	double func = 0.0;
+	
+	/*  Users fill in based on aimed problem */
+	
+	return func;
+}
+
+```
 
 
 
+#### 4.2 Function To Caculate Gradient Of f Given Current x
 
+The template of this function is as below:
+
+```
+double *personalized_grad_f( double *x ){
+
+	double *grad_f;
+	
+	/* Users fill in based on aimed problem */
+	
+	return grad_f;
+}
+
+```
+**Note:** f is the objective function without l1-regularization term. 
+
+
+#### 4.3 Function To Calculate Reduced Hessian Vector Product Given A Vector.
+
+
+The template is here:
+
+```
+double *personalized_hessVec( double *v ){
+
+	double *hv;
+	
+	/*  
+		Users fill in based on aimed problem
+		Return reduced_hessian_matrix * v
+		
+	 */
+	
+	return hv;
+}
+```
+
+To fill in the above template, three global variables maybe useful and can be directly used without any declaration: 
+
+- **x**: A double pointer points to a double array to saves current **x**.
+
+- **S**: A integer pointer points to a integer array that saves free variables' indexes at current **x**.
+
+- **nS**: A integer save the number of free vairables in **S**.
 
 
  --- 
  
-## License
+## License 
+
+© Contributors, 2016.
+
+FaRSA is free to academic use. 
  
  
  
