@@ -1,9 +1,9 @@
 <img src=https://github.com/tianyic/FaRSA/blob/master/farsa.jpg?raw=true width=135/> Fast Reduced Space Algorithm
 =====
 ---
-[Installation]()|
+[Installation](https://tianyic.github.io/)|
 [Documentation](https://tianyic.github.io/)|
-[License]()|
+[License](https://tianyic.github.io/)|
 
 FaRSA is an optimized library for solving l1-regularized convex optimization problem designed to be **efficient**, **flexible** and **user-friendly**.  l1-regularized convex optimization problem plays an important role in machine learning applications. An optimization framework [FaRSA](http://www.optimization-online.org/DB_FILE/2016/02/5331.pdf) has been proposed to efficiently solve such problem.  FaRSA implements highly optimized solutions for several widely used loss functions, like logistic loss, and supports generic loss function optimization.  
 
@@ -173,13 +173,42 @@ Users are expected to offer data file in specific data format if called FaRSA ro
 
 ### 4 Construct Personalized Problem
 
-FaRSA's generic routine can support any l1-regularized convex optimization problem. This attractive features allow users to design their own objective function, instead of being limited by the offered  To achieve calling generic routine,   
+FaRSA's generic routine can support any l1-regularized convex optimization problem. This attractive feature allows users to design their own objective function, instead of being limited by the problems in special optimized routine. To achieve calling generic routine, users are required to fill in **structure Input_FaRSA** to let FaRSA understand what the personalized objective function is.
+
+```
+struct Input_FaRSA{
+	int n;
+	double ( *func )( double * );
+	double *( *grad_f )( double * );
+	double *( *hessVec )( double * );
+};
+
+```
+
+In general, there are three functions to be implemented:
+
+- A function to calculate objective function value given current x
+
+- A function to calculate gradient of objecitve function given current x.
+
+- A function to calculate reduced hessian vector product given a vector. 
+
+
+
+#### 4.1 Function To Caculate Objecitve Function Value Given Current x
 
 
 
 
 
 
+
+ --- 
+ 
+## License
+ 
+ 
+ 
  
 
 
