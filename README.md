@@ -13,11 +13,11 @@ FaRSA is an optimized library for solving l1-regularized convex optimization pro
 
 #### 1. Download source file:
 
-- Download zip file from our [homepage](https://tianyic.github.io/)
+- Download zip file from our [github homepage](https://github.com/tianyic/FaRSA_private/blob/master/farsa.zip)
 
 - Clone it from our github repository:
 	
-		git clone https://github.com/tianyic/FaRSA
+		git clone https://github.com/tianyic/FaRSA_private
 		
 - For Unix users, you can also get our source files via: 
 
@@ -33,10 +33,10 @@ Then jump to uncompressed FaRSA directory, run the below command in terminal to 
 
 	make
 
-If compiling failed due to permission issue, please compile by 
+If you want to run farsa independent with current directory, run the below command in terminal:
 
-	sudo make
-
+	cp farsa /usr/bin/
+	
 To test whether installation is successful, run the below command:
 
 	farsa -t test
@@ -113,9 +113,11 @@ The format in profile is
 
 - **objective function type** : Objective function type for choosing whether use special optimized routine  or generic rountine. Feasible values are 1 or 3.
 
+	- 0 : call generic rountine
+
 	- 1 : call logistic loss rountine
 	
-	- 3 : call generic rountine
+	
 
 - **lambda coefficient**: Designed for special optimized routine. **Feasible range: [ 0, infinity )**, the **lambda** in aimed optimization problem would be **lambda coefficient / number of samples**, where the number of sample is data file's sample set size.
 
@@ -335,9 +337,11 @@ Contributors:
 
 - Tianyi Chen, PhD Candidate, Department of Applied Mathematics and Statistic, Johns Hopkins University. Email: <tchen59@jhu.edu>
 
+- Frank E. Curtis, Associate Professor, Department of Industrial and Systems Engineering, Lehigh University. Email: <frank.e.curtis@gmail.com>
+
 - Daniel P. Robinson, Assistant Professor, Department of Applied Mathematics and Statistic, Johns Hopkins University. Email: <daniel.p.robinson@gmail.com>
 
-- Frank E. Curtis, Associate Professor, Department of Industrial and Systems Engineering, Lehigh University. Email: <frank.e.curtis@gmail.com>
+
 
 
  
