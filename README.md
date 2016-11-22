@@ -39,7 +39,12 @@ If you want to run farsa independent with current directory, run the below comma
 	
 To test whether installation is successful, run the below command:
 
+	./farsa -t test
+
+**Remark: If you have copy farsa into bin directory, you can run farsa without directory dependence, like "./farsa", just run**
+
 	farsa -t test
+
 
 #### 3. Build on Ubuntu or other Unix Machines
 
@@ -52,13 +57,15 @@ In FaRSA directory, run the below command in terminal to compile:
 
 	make
 
-If compiling failed due to permission issue, please compile by 
+If you want to run farsa independent with current directory, run the below command in terminal:
 
-	sudo make
-
+	cp farsa /usr/bin/
+	
 To test whether installation is successful, run the below command:
 
-	farsa -t test
+	./farsa -t test
+	
+
 	
 ---
 
@@ -85,7 +92,7 @@ In order to successfully call FaRSA to solve aimed problem, users are expected t
 
 Once the above steps are complete, run the below command in terminal to call FaRSA for solving aimed problem:
 
-	farsa -p path_to_param_profile
+	./farsa -p path_to_param_profile
 
 Results would be displayed in terminal.
 
@@ -111,7 +118,7 @@ The format in profile is
 
 #### 2.1 Basic Parameters 
 
-- **objective function type** : Objective function type for choosing whether use special optimized routine  or generic rountine. Feasible values are 1 or 3.
+- **objective_function_type** : Objective function type for choosing whether use special optimized routine  or generic rountine. Feasible values are 1 or 3.
 
 	- 0 : call generic rountine
 
@@ -119,18 +126,29 @@ The format in profile is
 	
 	
 
-- **lambda coefficient**: Designed for special optimized routine. **Feasible range: [ 0, infinity )**, the **lambda** in aimed optimization problem would be **lambda coefficient / number of samples**, where the number of sample is data file's sample set size.
+- **lambda_coefficient**: Designed for special optimized routine. **Feasible range: [ 0, infinity )**, the **lambda** in aimed optimization problem would be **lambda coefficient / number of samples**, where the number of sample is data file's sample set size.
 
 - **lambda**: Set lambda in aimed optimization problem. Complementary for lambda coefficient. **Feasible range: [ 0, infinity )**. If lambda is nonnegative, then FaRSA would ignore lambda coefficient, otherwise FaRSA would use lambda coefficient to calculate lambda.
 
-- **data file**: Necessary for special optimized routine, not required for generic routine. Provide absolute path to access data file. 
+- **data_file**: Necessary for special optimized routine, not required for generic routine. Provide absolute path to access data file. 
 
-- **data format**: Necessary for special optimized routine, not required for generic routine. Declare data file format. Current feasible values: libsvm. 
+- **data_format**: Necessary for special optimized routine, not required for generic routine. Declare data file format. Current feasible values: libsvm. 
 
 
 #### 2.2 Advanced Parameters
 
-- **maximum iteration**: Maximum iteration of FaRSA optimization algorithm. Feasible range: positive integer set. Default: 1000
+- **print_level**: print level, there are 4 print levels now:
+
+	- 0: Print nothing
+	
+	- 1: Print summary information on terminal
+	
+	- 2: Output more detailed results into output file
+	
+	- 3: Print results as column format.
+
+
+- **maximum_iteration**: Maximum iteration of FaRSA optimization algorithm. Feasible range: positive integer set. Default: 1000
 
 - **Gamma**: Coefficient for switching between phi step or beta step. Feasible range: ( 0, 1 ]. Default: 1
 
@@ -142,9 +160,9 @@ The format in profile is
 
 - **tolerance**: Tolerance for termination. Feasible range: nonnegative float set. Suggest to set it from [ 1E-6, 1E-1 ]. Default: 1E-6.
 
-- **betaFrac**: Beta fraction to set the ratio of variables in beta step's calculation. Feasible range: ( 0, 1 ]. Default: 1.0
+- **beta_fraction**: Beta fraction to set the ratio of variables in beta step's calculation. Feasible range: ( 0, 1 ]. Default: 1.0
 
-- **phiFrac**: Phi fraction to set the ratio of variables in phi step's calculation. Feasible range: ( 0, 1 ]. Default: 1.0
+- **phi_fraction**: Phi fraction to set the ratio of variables in phi step's calculation. Feasible range: ( 0, 1 ]. Default: 1.0
 
 - **max_CG_iter**: Maximum conjugate gradient method iteration. Feasible range: positive integer set. Default: 1000
 
@@ -155,9 +173,9 @@ positive float set. Default: 0.1
 
 - **maxback**: Maximum allowed backtracking line search time. Feasible range: positive integer set. Default: 100
 
-- **fracViol**: Maximum allowed violating variable ratio for reduced space solver. Feasible range: [ 0, 1 ]. Default: 0.1. Real maximum allowed violating variable also depends on the next parameter: **nVmaxAllow**.
+- **frac_viol**: Maximum allowed violating variable ratio for reduced space solver. Feasible range: [ 0, 1 ]. Default: 0.1. Real maximum allowed violating variable also depends on the next parameter: **nVmaxAllow**.
 
-- **nVmaxAllow**: The number of maximum allowed violating variable for reduced space solver. Feasible range: positive integer. Default: 1000. 
+- **nV_max_allow**: The number of maximum allowed violating variable for reduced space solver. Feasible range: positive integer. Default: 1000. 
 
 ### 3 Data Set Prepration
 
@@ -281,26 +299,18 @@ int main( int argc, char **argv ){
 ```
 
 
-### 5 Run FaRSA
+### 5 Run FaRSA on Single Test Problem
 
 After building profile and modifying client.c if necessary, we need to compile FaRSA one more time by
 
 	make
-
-If compiling failed due to permission issue, please compile by 
-
-	sudo make
-
-To test whether compile is successful, run the below command:
-
-	farsa -t test
 
 
 **Note:** If there is **NO change** in **client.c**, then there is **no** need to complie FaRSA one more time if you have complied before.
 
 Now, we are ready to run FaRSA to solve our aimed problems. Run the below command:
 
-	farsa -t path_to_profile
+	./farsa -t path_to_profile
 
 **Note:** path_to_profile is 
 
@@ -311,7 +321,7 @@ Now, we are ready to run FaRSA to solve our aimed problems. Run the below comman
 Output will be displayed in terminal, like
 
 ```
-$ farsa -p FaRSA1.profile
+$ ./farsa -p FaRSA1.profile
 Dataset Description:
 Number of samples : 19996
 Number of features: 1355191
@@ -324,6 +334,23 @@ Error: 0.000001
 Target tolerance: 0.000001
 runtime: 3.333872s
 ```
+
+### 6 Run FaRSA on A Buntch of Test Problems
+
+If you want to run FaRSA on a buntch of test problems, the below is necessary:
+
+- Provide profiles for each test problem. And save them in offered profiles directory
+
+- For each profile, set printlevel as 3 
+
+- Create a file to save the names of profile.
+
+- Run the below command in farsa directory in terminal:
+
+		bash runall.sh probfile.txt
+
+
+
 
  --- 
  
