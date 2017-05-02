@@ -1,9 +1,6 @@
 <img src=https://github.com/tianyic/FaRSA/blob/master/farsa.jpg?raw=true width=135/> Fast Reduced Space Algorithm
 =====
 ---
-[Installation](https://tianyic.github.io/)|
-[Documentation](https://tianyic.github.io/)|
-[License](https://tianyic.github.io/)|
 
 FaRSA is an optimized library for solving l1-regularized convex optimization problem designed to be **efficient**, **flexible** and **user-friendly**.  l1-regularized convex optimization problem plays an important role in machine learning applications. An optimization framework [FaRSA](http://www.optimization-online.org/DB_FILE/2016/02/5331.pdf) has been proposed to efficiently solve such problem.  FaRSA implements highly optimized solutions for several widely used loss functions, like logistic loss, and supports generic loss function optimization.  
 
@@ -17,11 +14,7 @@ FaRSA is an optimized library for solving l1-regularized convex optimization pro
 
 - Clone it from our github repository:
 	
-		git clone https://github.com/tianyic/FaRSA_private
-		
-- For Unix users, you can also get our source files via: 
-
-		wget someurl.FaRSA.zip
+		git clone https://github.com/tianyic/FaRSA
 	
 After obtaining our source file, please uncompress zip file. 
 
@@ -146,6 +139,10 @@ The format in profile is
 	- 2: Output more detailed results into output file
 	
 	- 3: Print results as column format.
+	
+	- 4: Print detailed informaiton in output file.
+	
+	- 5: Print summary information in terminal and detailed information in output file.
 
 
 - **maximum_iteration**: Maximum iteration of FaRSA optimization algorithm. Feasible range: positive integer set. Default: 1000
